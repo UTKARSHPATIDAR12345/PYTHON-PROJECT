@@ -57,7 +57,20 @@ class purchase(product_info):
             3)LIQUID SOLUTION
             ''')  
         self.product_name=input()  
-
+    def products(self):
+        print("PLEASE ENTER THE PRODUCT INFORMATION")
+        print("MRP")
+        self.mrp=int(input())
+        print("SALE_RATE")
+        self.sale_rate=int(input())
+        print("PURCHASE_RATE")
+        self.pur_rate=int(input())
+        print("EXPIRY DATE")
+        self.exp_date=input()
+        print("DISCOUNT")
+        self.discount=float(input())
+        print("FINAL PRICE")
+        self.final_price=float(input())
            
         
     def update_database(self):
@@ -143,11 +156,17 @@ class sales(product_info):
 
         
 #if"name"=="main":
+print('''PLEASE SELECT FROM THE GIVEN OPTIONS
+1)BUY
+2)SALE''')
+choice=int(input())
 buy = purchase()
-buy.input_company()
-buy.input_product()
-
 sell = sales()
-sell.input_customer()
-sell.input_company()
-sell.input_product()
+if choice==1:
+    buy.input_company()
+    buy.input_product()
+
+elif choice==2:
+    sell.input_customer()
+    sell.input_company()
+    sell.input_product()
