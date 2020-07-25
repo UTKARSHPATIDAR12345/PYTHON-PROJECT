@@ -199,7 +199,7 @@ connection=sqlite3.connect("SALE_TABLE.db")
 
 cur=connection.cursor()
 
-sql_command = """CREATE TABLE sale (   
+cur.execute('''CREATE TABLE IF NOT EXISTS sale(   
 productname VARCHAR(30),  
 companyname VARCHAR(30),
 cutomername VARCHAR(30),
@@ -208,6 +208,16 @@ purchaserate integer,
 salerate float,
 expdate text NOT NULL,
 discount float,
-finalrate float,  
-);"""
+finalrate float
+) 
+''')
+
+
+
+sql_command = """INSERT INTO sale VALUES ("BIO-CHEMISTRY", "AGAPPE", "AADARSH", 150,50,230, "2021-03-28",10,220);"""
+cur.execute(sql_command) 
+
+connection.commit()
+
+connection.close()
 
