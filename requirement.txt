@@ -1,0 +1,46 @@
+##############################################################
+Modules to be include:
+  1. Login Module
+      ~ Admin
+      ~ Customer
+  2. Database (cloud) {same access to all}
+      ~ sqlite3 (import sqlite3)
+  3. GUI 
+      ~ tkinter (import tkinter)
+  4. Payment Module:
+      ~Online
+      ~COD/POD
+##############################################################
+Software Requirements:
+  1. Python 3(.x): For performing backhand programming (Coding)
+  2. sqlite3: For storing all datas 
+  3. Tkinter: For performing fronthand programming (GUI)
+##############################################################  
+Admin Access Module:
+  1. Company and Product list/update
+  2. Customer details and access
+  3. Price list and update
+  4. Stock check and update
+  5. Manufacture and Expiry Date update
+  6. Database Entry/Update/Control/Store/Access
+  7. Past order details of existing Customers
+  8. Discount (if any) update
+  9. Maintenance and regular check
+--------------------------------------------------------------  
+Customer Access Module:
+  1. Company and Product List
+  2. Price Visibility
+  3. Stock Visibility
+  4. Manufacture and Expiry date Visibility
+  5. Past Order details
+      if existing customer:
+        allow 
+      else:
+        register
+  6. Discount Visibility
+  7. Changes regarding Mobile Number, Name, Address  etc
+##############################################################  
+Database Entry: (Only for Admin)
+  ID    NAME    MOBILE    EMAIL   PRICE   DATE
+
+##############################################################
