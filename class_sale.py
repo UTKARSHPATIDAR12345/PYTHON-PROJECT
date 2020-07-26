@@ -1,3 +1,14 @@
+import sqlite3
+
+
+class product_info:
+    mrp=0
+    pur_rate=0
+    exp_date=" "
+    discount=0.0
+    final_price=0.0
+
+
 class sales(product_info):
     
     def _init_(self):
@@ -64,8 +75,6 @@ class sales(product_info):
         print("PLEASE ENTER THE PRODUCT INFORMATION")
         print("MRP")
         self.mrp=int(input())
-        print("SALE_RATE")
-        self.sale_rate=int(input())
         print("PURCHASE_RATE")
         self.pur_rate=int(input())
         print("EXPIRY DATE")
@@ -77,17 +86,16 @@ class sales(product_info):
 
 
     def update_database(self):
-        connection_sale=sqlite3.connect("SALE_TABLE.db")
+        connection_sale=sqlite3.connect("PROJECT.db")
 
         cursor_sale=connection_sale.cursor()
 
         cursor_sale.execute('''CREATE TABLE IF NOT EXISTS sale(   
-        productname VARCHAR(30),  
-        companyname VARCHAR(30),
         cutomername VARCHAR(30),
+        companyname VARCHAR(30),
+        productname VARCHAR(30),  
         mrp integer,
         purchaserate integer,
-        salerate float,
         expdate text NOT NULL,
         discount float,
         finalrate float
@@ -97,7 +105,7 @@ class sales(product_info):
 
 
 
-        cursor_sale.execute("INSERT INTO sale (productname,companyname,cutomername,mrp,purchaserate,salerate,expdate,discount,finalrate) VALUES(?,?,?,?,?,?,?,?,?)" ,(self.product_name, self.com_name, self.customer_name,self.mrp,self.pur_rate,self.sale_rate,self.exp_date,self.discount,self.final_price)) 
+        cursor_sale.execute("INSERT INTO sale (cutomername,companyname,productname,mrp,purchaserate,expdate,discount,finalrate) VALUES(?,?,?,?,?,?,?,?)" ,(self.customer_name, self.com_name,self.product_name ,self.mrp,self.pur_rate,self.exp_date,self.discount,self.final_price)) 
 
         connection_sale.commit()
 
