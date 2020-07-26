@@ -18,7 +18,7 @@ class customer:
         self.address=input()
         
     def database_customer(self):
-        connection_customer=sqlite3.connect("CUSTOMER.db")
+        connection_customer=sqlite3.connect("PROJECT.db")
 
         cursor_customer=connection_customer.cursor()
 
