@@ -95,24 +95,20 @@ class sales(product_info):
     def update_database(self):
         
         connection_sale = sqlite3.connect("PROJECT.db")
-
         cursor_sale = connection_sale.cursor()
-
         cursor_sale.execute('''CREATE TABLE IF NOT EXISTS sale(   
-                    customername VARCHAR(30),
-                    companyname VARCHAR(30),
-                    productname VARCHAR(30),  
+                    ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+                    customername VARCHAR(30) NOT NULL,
+                    companyname VARCHAR(30) NOT NULL,
+                    productname VARCHAR(30) NOT NULL,  
                     mrp REAL,
-                    purchaserate integer,
+                    purchaserate REAL,
                     expdate REAL NOT NULL,
                     discount REAL,
                     finalrate REAL
                 ) 
             ''')
-
         cursor_sale.execute("INSERT INTO sale (customername, companyname, productname, mrp, purchaserate, expdate, discount, finalrate) VALUES(?, ?, ?, ?, ?, ?, ?, ?)" ,(self.customer_name, self.com_name, self.product_name , self.mrp, self.pur_rate, self.exp_date, self.discount, self.final_price)) 
-
         connection_sale.commit()
-
-        connection_sale.close()77
+        connection_sale.close()
 
