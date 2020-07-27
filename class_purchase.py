@@ -83,24 +83,20 @@ class purchase(product_info):
 
     def update_purchase_database(self):
         
-        connection_purcahse = sqlite3.connect("PROJECT.db")
-
-        cursor_purchase = connection_purcahse.cursor()
-
-        cursor_purchase.execute('''CREATE TABLE IF NOT EXISTS purchase(   
-                        companyname VARCHAR(30),
-                        productname VARCHAR(30),  
+        connection_purchase = sqlite3.connect("PROJECT.db")
+        cursor_purchase = connection_purchase.cursor()
+        cursor_purchase.execute('''CREATE TABLE IF NOT EXISTS purchase( 
+                        ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,  
+                        companyname VARCHAR(30) NOT NULL,
+                        productname VARCHAR(30) NOT NULL,  
                         mrp REAL,
-                        purchaserate INT,
+                        purchaserate REAL,
                         expdate REAL NOT NULL
                     ) 
             ''')
-
-        cursor_purchase.execute("INSERT INTO sale (companyname, productname, mrp, purchaserate, expdate) VALUES(?, ?, ?, ?, ?)" ,( self.com_name, self.product_name , self.mrp, self.pur_rate, self.exp_date)) 
-
-        connection_purcahse.commit()
-
-        connection_purcahse.close()
+        cursor_purchase.execute("INSERT INTO sale (companyname, productname, mrp, purchaserate, expdate) VALUES (?, ?, ?, ?, ?)" ,( self.com_name, self.product_name , self.mrp, self.pur_rate, self.exp_date)) 
+        connection_purchase.commit()
+        connection_purchase.close()
 
          
 
